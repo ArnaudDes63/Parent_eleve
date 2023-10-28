@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Titre de la page</title>
+    <link rel="stylesheet" href="./view/asset/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./view/asset/css/index.css">
+    <link rel="stylesheet" href="./view/asset/css/login.css">
+</head>
+
+<body>
+
+    <section class="row mb-1">
+        <div class="col-12 col-lg-8 text-center mx-auto order-lg-1">
+            <img src="./view/asset/images/logo.png" class="img-fluid">
+        </div>
+        <div class="section-acceuil-header row order-lg-1">
+            <div class="col-lg-5 mt-1">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-5 mb-1">
+                        <img src="./view/asset/images/ecole.webp" alt="Bureau One2Learn" class="img-fluid rounded"
+                            width="400px" height="350px">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 mt-5">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-4">
+                        <h3>InforMations : </h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-4">
+                        <p>Ce site est tenu par les délégués des parents d'élèves du groupe scolaire Jean Moulin à
+                            Veyre-Monton dans le Puy-de-Dôme. Il vise à informer les parents et les élèves sur la vie de
+                            l'école.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <main class="container-fluid py-3">
+        <div class="row">
+            <?php foreach ($listearticle as $at) { ?>
+                <div class="col-12 col-sm-6 col-md-4 mb-3">
+                    <div class="card border border-secondary h-100">
+                        <img class="card-img-top" src="<?php echo $at['image'] ?>" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <?php echo $at['titre'] ?>
+                            </h5>
+                            <p class="card-text">
+                                <?php echo $at['paragraphe_abrege'] ?>
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="index.php?action=article&id=<?= $at['id']; ?>" class="btn btn-primary">En savoir
+                                plus</a>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    </main>
+
+    <script src="./view/asset/js/inscription.js"></script>
+
+
+</body>
+
+</html>

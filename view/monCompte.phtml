@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mon Compte</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-5">Bienvenue sur votre page de compte</h1>
+        <?php if (isset($_SESSION['login_id'])): ?>
+            <p>Bonjour, <?php echo $_SESSION['login_nom']; ?></p>
+            <p>Informations de votre compte :</p>
+            <ul>
+                <?php
+                $userDAO = new LoginDAO;
+                $userInfo = $userDAO->userInfo($_SESSION['login_id']);
+                ?>
+                <li>Nom : <?php echo $userInfo['nom']; ?></li>
+                <li>Email : <?php echo $userInfo['email']; ?></li>
+                <li>Adresse : <?php echo $userInfo['adresse']; ?></li>
+                <li>Cp : <?php echo $userInfo['cp']; ?></li>
+                <li>Ville : <?php echo $userInfo['ville']; ?></li>
+                <li>Pays : <?php echo $userInfo['pays']; ?></li>
+                <li>Tel : <?php echo $userInfo['numero_tel']; ?></li>
+            </ul>
+            <p>Si vous voulez mettre à jour vos informations de compte, veuillez utiliser le formulaire ci-dessous :</p>
+            <form action="index.php?action=monCompte" method="post">
+                <div class="form-group">
+                    <label for="nom">Nom :</label>
+                    <input type="text" class="form-control" id="nom" name="nom" value="<?php echo $userInfo['nom']; ?>">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email :</label>
+                    <input type="email" class="form-control" id="email" name="email" value="<?php echo $userInfo['email']; ?>">
+                </div>
+                <div class="form-group">
+                    <label for="adresse">Adresse :</label>
+                    <input type="text" class="form-control" id="adresse" name="adresse" value="<?php echo $userInfo['adresse']; ?>">
+                </div>
+                <div class="form-group">
+                    <label for="cp">Code Postal :</label>
+                    <input type="text" class="form-control" id="cp" name="cp" value="<?php echo $userInfo['cp']; ?>">
+                </div>
+                <div class="form-group">
+                    <label for="ville">Ville :</label>
+                    <input type="text" class="form-control" id="ville" name="ville" value="<?php echo $userInfo['ville']; ?>">
+                </div>
+                <div class="form-group">
+                    <label for="pays">Pays :</label>
+                    <input type="text" class="form-control" id="pays" name="pays" value="<?php echo $userInfo['pays']; ?>">
+                </div>
+                <div class="form-group">
+                    <label for="tel">Numéro de téléphone :</label>
+                    <input type="tel" class="form-control" id="numero_tel" name="numero_tel" value="<?php echo $userInfo['numero_tel']; ?>">
+                </div>
+                <button type="submit" class="btn btn-primary">Mettre à jour</button>
+            </form>
+            
+
+            <?php
+            if (isset($updateSuccess) && $updateSuccess) {
+                echo "<p>Vos informations de compte ont été mises à jour avec succès !</p>";
+            }
+            ?>
+        <?php endif; ?>
+</body>
+
+</html>

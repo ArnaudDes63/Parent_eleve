@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./view/asset/css/login.css">
+
+    <title>Document</title>
+</head>
+
+<body class="bg-image"
+    style="background-image: url('https://s1.1zoom.me/big0/177/School_Stationery_Multicolor_Ballpoint_pen_Pencils_568609_1271x1024.jpg') ">
+
+    <!-- BREADCRUMBS -->
+    <div class="bcrumbs mt-5">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.php" class="text-decoration-none">Accueil</a></li>
+                <li class="breadcrumb-item active">Login</li>
+            </ul>
+        </div>
+    </div>
+    <!-- MY ACCOUNT -->
+    <div class="account-wrap mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-6">
+                    <!-- HTML -->
+                    <div id="account-id">
+                        <h4 class="account-title mb-3">CONNEXION</h4>
+                        <div class="account-form">
+                            <?php if ($connexion_error == 1) { ?>
+                                <div class="alert" role="alert">
+                                    Email ou mot de passe incorrect
+                                    <br>
+                                    <br>
+                                    Veuillez vérifier les saisies
+                                </div>
+                            <?php } ?>
+                            <form class="form-login" method="POST" action="index.php?action=login">
+                                <ul class="form-list row">
+                                    <li class="col-md-12 col-sm-12 nav-link">
+                                        <label>Email <em>*</em></label>
+                                        <input required type="text" class="form-control" name="cemail">
+                                    </li>
+                                    <li class="col-md-12 col-sm-12 nav-link">
+                                        <label for="connexionPassword" id="motDePasse">Mot de passe <em>*</em></label>
+                                        <input required type="password" class="form-control" name="cpassword"
+                                            id="connexionPassword">
+                                        <input type="checkbox" id="connexionShowPassword">
+
+                                        <label for="howPassword" id="connexionLabelShowPassword">Mot de passe
+                                            visible</label>
+                                        <br />
+                                    </li>
+                                </ul>
+                                <div class="text-center mt-3">
+                                    <button class="btn btn-primary" type="submit" name="connexion">Login</button>
+                                    <button class="btn"><a class="btn btn-primary" href="index.php?action=passwordOublier" >Mot de passe oublier</a></button>
+
+
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="account-wrap mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="col-sm-6 col-md-6 ">
+                        <!-- HTML -->
+                        <div id="account-id">
+                            <h4 class="account-title mb-3">
+                                <span class="fa fa-chevron-right"></span>INSCRIPTION
+                            </h4>
+                            <div class="account-form">
+                                <?php if ($inscription_ok == 1) { ?>
+                                    <div class="alert" role="alert">
+                                        <p>Votre inscription a bien été prise en compte</p>
+                                        <br>
+                                        <br>
+                                        Veuillez vous connecter
+                                    </div>
+                                <?php } elseif ($inscription_ok == 2) { ?>
+                                    <div class="alert-inscrit" role="alert">
+                                        <p>Email déjà utiliser !</p>
+                                        <br>
+                                        <br>
+                                        Veuillez Saisir une nouvelle adresse Email !!
+                                    </div>
+                                <?php } ?>
+                                <p class="bg-success" id="message"></p>
+                                <form class="form-login" method="POST" action="index.php?action=login"
+                                    id="formInscription">
+                                    <ul class="form-group">
+                                        <li class="form-group nav-link">
+                                            <label>Nom & prénom <em>*</em></label>
+                                            <input required type="text" class="form-control" name="nom" id="nom">
+                                        </li>
+                                        <li class="form-group nav-link">
+                                            <label>Email <em>*</em></label>
+                                            <input required type="text" class="form-control" name="email" id="email"
+                                                value="<?php if (isset($email)) {
+                                                    echo $email;
+                                                } ?>">
+                                        </li>
+                                        <li class="form-group nav-link">
+                                            <label for="password" id="motDePasse">Mot de passe <em>*</em></label>
+                                            <input required type="password" class="form-control" name="password"
+                                                id="password">
+                                            <input type="checkbox" id="showPassword">
+
+                                            <label for="showPassword" id="labelShowPassword">Mot de passe
+                                                visible</label>
+                                            <br />
+                                        </li>
+                                    </ul>
+                                    <div class="text-center mt-3">
+                                        <button class="btn btn-primary" type="submit" name="inscription"
+                                            id="inscription">Incription</button>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script src="./view/asset/js/inscription.js"></script>
+
+</body>
+
+</html>
