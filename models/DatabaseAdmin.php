@@ -15,7 +15,7 @@ class Database {
     public static function connect(){
 
         try{
-        self::$bdd = new PDO('mysql:host=mysql-dessaint-arnaud.alwaysdata.net;dbname=dessaint-arnaud_projet;charset=utf8',"286913","Reignat63");
+        self::$bdd = new PDO('C'est secret :) Merci Greg");
         }
         catch(Exception $erreur){
             die("ERROR connexion a la base de donnée:" .$erreur->getMessage());
